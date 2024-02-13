@@ -745,21 +745,6 @@ where
         self.block.clone()
     }
 
-    /// Returns a shared reference to application's API.
-    pub fn api(&self) -> &ApiT {
-        &self.api
-    }
-
-    /// Returns a shared reference to application's storage.
-    pub fn storage(&self) -> &StorageT {
-        &self.storage
-    }
-
-    /// Returns a mutable reference to application's storage.
-    pub fn storage_mut(&mut self) -> &mut StorageT {
-        &mut self.storage
-    }
-
     /// Simple helper so we get access to all the QuerierWrapper helpers,
     /// eg. wrap().query_wasm_smart, query_all_balances, ...
     pub fn wrap(&self) -> QuerierWrapper<CustomT::QueryT> {

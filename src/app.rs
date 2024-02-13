@@ -56,7 +56,7 @@ pub struct App<
 > {
     router: Router<Bank, Custom, Wasm, Staking, Distr, Ibc, Gov>,
     api: Api,
-    storage: Storage,
+    pub storage: Storage,
     block: BlockInfo,
 }
 
@@ -743,6 +743,21 @@ where
     /// Returns a copy of the current block_info
     pub fn block_info(&self) -> BlockInfo {
         self.block.clone()
+    }
+
+    /// Returns a shared reference to application's API.
+    pub fn api(&self) -> &ApiT {
+        &self.api
+    }
+
+    /// Returns a shared reference to application's storage.
+    pub fn storage(&self) -> &StorageT {
+        &self.storage
+    }
+
+    /// Returns a mutable reference to application's storage.
+    pub fn storage_mut(&mut self) -> &mut StorageT {
+        &mut self.storage
     }
 
     /// Simple helper so we get access to all the QuerierWrapper helpers,
